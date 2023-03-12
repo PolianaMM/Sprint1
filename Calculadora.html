@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+	<html lang="pt-BR">
+	<head>
+	    <meta charset="UTF-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <link rel="stylesheet" href="style.css">
+	    <title>Simulador Financeiro</title>
+	</head>
+	<body>
+	        <div id="tela">  
+                <br><br><h1>Controle de Perda</h1><br>          
+	            Valor do KG:<br> <input id="input_valor"><br><br>
+	            Quantidade de Kg vendidos/entrega:<br> <input id="input_quantidade"> <br><br>
+	            Quantidade de entregas: <br> <input id="input_entregas"><br><br>
+	            <button onclick="mensal()">Média Mensal</button> 
+	            <button onclick="semestral()">Média Semestral</button>
+	            <button onclick="anual()">Média Anual</button>
+	         <p id="exibicao"></p></div>
+	</body>
+	</html>
+	<script>
+	    function mensal() {
+	        var valor = Number(input_valor.value)
+	        var quantidade = Number(input_quantidade.value)
+	        var entregas = Number(input_entregas.value)
+	        var venda = quantidade * valor
+	        var total = venda * entregas
+	        var prejuizo = total * 0.30
+	        var perda = total - prejuizo
+	
+	        exibicao.innerHTML = `<p> O percentual de perda no <i>mês</i> seria de em média <b style=" color:red">R$${prejuizo}</b> e o lucro bruto mensal de R$<b style="color:blue">${perda}</b>. <br><br>
+	        Com os sensores da <b>QualityBeef</b> a redução de prejuízos poderá chegar a <b style=" color:green">R$${total}</b>.</p>`     
+		    }
+	    function semestral() {
+	        var valor = Number(input_valor.value)
+	        var quantidade = Number(input_quantidade.value)
+	        var entregas = Number(input_entregas.value)
+	        var venda = quantidade * valor
+	        var total = venda * entregas
+	        var mediasemestre = total * 6
+	        var prejuizo = mediasemestre * 0.30
+	        var perdasemestral = (mediasemestre - prejuizo)
+	
+            exibicao.innerHTML = `<p> O percentual de perda <i>Semestral</i> seria de em média <b style=" color:red">R$${prejuizo}</b> e o lucro bruto mensal de R$<b style="color:blue">${perdasemestral}</b>. <br><br>
+	        Com os sensores da <b>QualityBeef</b> a redução de prejuízos poderá chegar a <b style=" color:green">R$${mediasemestre}</b>.</p>` 
+	    }
+	    function anual() {
+	        var valor = Number(input_valor.value)
+	        var quantidade = Number(input_quantidade.value)
+	        var entregas = Number(input_entregas.value)
+	        var venda = quantidade * valor
+	        var total = venda * entregas
+	        var mediaanual = total * 12
+	        var prejuizo = mediaanual * 0.30
+	        var perdaanual = (mediaanual - prejuizo)
+	
+	        exibicao.innerHTML = `<p> O percentual de perda neste <i>ano</i> seria de em média <b style=" color:red">R$${prejuizo}</b> e o lucro bruto mensal de R$<b style="color:blue">${perdaanual}</b>. <br><br>
+	        Com os sensores da <b>QualityBeef</b> a redução de prejuízos poderá chegar a <b style=" color:green">R$${mediaanual}</b>.</p>` 
+		}
+	</script>
